@@ -23,3 +23,9 @@ def about(request):
     }
 
     return render(request, 'main/about.html', context)
+
+def contacts(request):
+    return render(request, 'main/contacts.html', {'title': 'Контакти'})
+
+def payment_delivery(request):
+    return render(request, 'main/payment_delivery.html', {'title': 'Оплата і Доставка'})

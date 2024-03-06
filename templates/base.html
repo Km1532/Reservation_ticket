@@ -20,8 +20,8 @@
     <title>{{ title }}</title>
 </head>
 
-<body>
-    <header>
+<body style="color: #b0bf6cc3 !important;">
+        <header>
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'main:index' %}">Головна</a>
@@ -32,15 +32,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown "><li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
                                 Інформація
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="#">Доставка і оплата</a></li>
-                                <li><a class="dropdown-item  text-white" href="#">Контактна інформація</a></li>
-                                <li><a class="dropdown-item  text-white" href="{% url 'main:about' %}">Про нас</a></li>
+                                <li><a class="dropdown-item text-white" href="{% url 'main:payment_delivery' %}">Доставка і оплата</a></li>
+                                <li><a class="dropdown-item text-white" href="{% url 'main:contacts' %}">Контактна інформація</a></li>
+                                <li><a class="dropdown-item text-white" href="{% url 'main:about' %}">Про нас</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -57,7 +57,7 @@
                                     Мій Профіль
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item  text-white" href="carts/cart.html">Кошик</a></li>
+                                    <!-- <a class="nav-link  text-white" href="{% url 'user:users_cart' %}">Кошик</a> -->
                                     <li><a class="dropdown-item  text-white" href="{% url 'user:profile' %}">Особистий кабінет</a>
                                     </li>
                                     {% if user.is_admin or user.is_staff %}
@@ -92,7 +92,7 @@
                     <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
                         {% tag_categories as categories %}
                         {% for category in categories %}
-                            <li><a class="dropdown-item text-white" href="{% url 'catalog:index' slug=category.slug %}">{{category.name}}</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url 'catalog:index' category_slug=category.slug %}">{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>

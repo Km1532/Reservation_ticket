@@ -5,6 +5,7 @@ body {
   background-position: center center;
   background-size: cover;
   height: 100%;
+  color: #e6d19e ; /* або #9ed0e6 */
 }
 
 .dropdown-toggle::after {
@@ -35,4 +36,5 @@ body {
   top: 80%;
   border-radius: 15px;
   font-size: 0.7rem;
+  color: #e6d19e ; /* або #9ed0e6 */
 }
