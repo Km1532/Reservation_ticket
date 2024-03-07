@@ -29,3 +29,7 @@ def contacts(request):
 
 def payment_delivery(request):
     return render(request, 'main/payment_delivery.html', {'title': 'Оплата і Доставка'})
+
+def reviews(request):
+    # Логіка відгуків
+    return render(request, 'main/reviews.html', {'content': 'Відгуки'})

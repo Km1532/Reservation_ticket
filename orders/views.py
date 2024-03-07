@@ -49,7 +49,7 @@ def create_order(request):
 
                         cart_items.delete()
 
-                        messages.success(request, 'Заказ оформлен!')
+                        messages.success(request, 'Замовлення оформлено!')
                         return redirect('user:profile')
             except ValidationError as e:
                 messages.success(request, str(e))

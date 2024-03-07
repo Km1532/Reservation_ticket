@@ -42,7 +42,7 @@ def cart_add(request):
         "carts/includes/included_cart.html", {"carts": user_cart}, request=request)
 
     response_data = {
-        "message": "Товар доданий в корзину",
+        "message": "Товар доданий в кошик",
         "cart_items_html": cart_items_html,
     }
 
@@ -86,7 +86,7 @@ def cart_remove(request):
         "carts/includes/included_cart.html", {"carts": user_cart}, request=request)
 
     response_data = {
-        "message": "Товар удален",
+        "message": "Товар видалений",
         "cart_items_html": cart_items_html,
         "quantity_deleted": quantity,
     }

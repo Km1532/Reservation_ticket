@@ -41,7 +41,7 @@
                                 <li><a class="dropdown-item text-white" href="{% url 'main:payment_delivery' %}">Доставка і оплата</a></li>
                                 <li><a class="dropdown-item text-white" href="{% url 'main:contacts' %}">Контактна інформація</a></li>
                                 <li><a class="dropdown-item text-white" href="{% url 'main:about' %}">Про нас</a></li>
-                            </ul>
+                                <li><a class="dropdown-item text-white" href="{% url 'main:reviews' %}">Відгуки</a></li>                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link  text-white" href="{% url 'user:users_cart' %}">Кошик</a>
@@ -61,7 +61,7 @@
                                     <li><a class="dropdown-item  text-white" href="{% url 'user:profile' %}">Особистий кабінет</a>
                                     </li>
                                     {% if user.is_admin or user.is_staff %}
-                                        <li><a class="dropdown-item  text-white" href="{% url 'admin:index' %}">Админ панель</a></li>
+                                        <li><a class="dropdown-item  text-white" href="{% url 'admin:index' %}">Адмін панель</a></li>
                                     {% endif %}
                                     <li>
                                         <hr class="dropdown-divider">
