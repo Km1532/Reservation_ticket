@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from .models import Review
+from .forms import ReviewForm
 from goods.models import Categories
 
 
@@ -31,5 +33,16 @@ def payment_delivery(request):
     return render(request, 'main/payment_delivery.html', {'title': 'Оплата і Доставка'})
 
 def reviews(request):
-    # Логіка відгуків
-    return render(request, 'main/reviews.html', {'content': 'Відгуки'})
+    reviews = Review.objects.all()
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user  
+            review.save()
+            return redirect('main:reviews')
+
+    context = {'reviews': reviews, 'form': form}
+    return render(request, 'main/reviews.html', context)

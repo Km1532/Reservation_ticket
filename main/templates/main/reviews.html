@@ -1,24 +1,54 @@
+<!-- reviews.html -->
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
         <h1 class="mt-5 pt-5"><strong>{{ content }}</strong></h1>
         <div class="row">
             <div class="col-md-8">
-                <!-- Bootstrap Card Component for Reviews -->
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Користувач 1</h5>
-                        <p class="card-text">Відгук користувача 1.</p>
-                    </div>
-                </div>
-
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Користувач 2</h5>
-                        <p class="card-text">Відгук користувача 2.</p>
-                    </div>
-                </div>
+                <!-- Display existing reviews -->
+                <h2 class="mt-4">Відгуки:</h2>
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ review.nickname }}</h5>
+                                <p class="card-text">{{ review.service }}</p>
+                                <p class="card-text">{{ review.comment }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Наразі немає відгуків</p>
+                {% endif %}
             </div>
         </div>
+
+        <!-- Form for adding a new review -->
+        <h2 class="mt-5">Додати відгук</h2>
+        <form method="post" action="{% url 'main:reviews' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nickname" class="form-label">Нікнейм</label>
+                <input type="text" class="form-control" id="nickname" name="nickname" required>
+            </div>
+            <div class="mb-3">
+                <label for="service" class="form-label">Про сервіс</label>
+                <textarea class="form-control" id="service" name="service" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Коментар</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <p>Якщо вам все сподобалося, ви можете поставити зірочку:</p>
+                <div class="rating">
+                    {% for i in "1" %}
+                        <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}">
+                        <label for="star{{ i }}"> &#9733; </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Додати відгук</button>
+        </form>
     </div>
 {% endblock %}
