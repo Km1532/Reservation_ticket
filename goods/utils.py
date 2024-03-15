@@ -38,7 +38,14 @@ def q_search(query):
             stop_sel="</span>",
         )
     )
+
+    # Фільтрація товарів за доступністю
+    if 'available_only' in query:
+        result = result.filter(quantity__gt=0)
+
     return result
+
+
     #
     #  keywords = [word for word in query.split() if len(word) > 2]
 

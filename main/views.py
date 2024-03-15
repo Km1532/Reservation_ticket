@@ -33,9 +33,6 @@ def payment_delivery(request):
     return render(request, 'main/payment_delivery.html', {'title': 'Оплата і Доставка'})
 
 def reviews(request):
-    reviews = Review.objects.all()
-    form = ReviewForm()
-
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -43,6 +40,9 @@ def reviews(request):
             review.user = request.user  
             review.save()
             return redirect('main:reviews')
+    else:
+        form = ReviewForm()
 
+    reviews = Review.objects.all()
     context = {'reviews': reviews, 'form': form}
     return render(request, 'main/reviews.html', context)

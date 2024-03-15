@@ -7,6 +7,7 @@ from goods.utils import q_search
 def catalog(request, category_slug=None):
     page = request.GET.get('page', 1)
     on_sale = request.GET.get('on_sale', None)
+    available_only = request.GET.get('available_only', None)
     order_by = request.GET.get('order_by', None)
     query = request.GET.get('q', None)
     
@@ -20,6 +21,9 @@ def catalog(request, category_slug=None):
     if on_sale:
         goods = goods.filter(discount__gt=0)
 
+    if available_only:
+        goods = goods.filter(quantity__gt=0)
+
     if order_by and order_by != "default":
         goods = goods.order_by(order_by)
 
@@ -32,6 +36,7 @@ def catalog(request, category_slug=None):
         "slug_url": category_slug
     }
     return render(request, "goods/catalog.html", context)
+
 
 
 def product(request, product_slug):
