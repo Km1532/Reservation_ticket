@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Review
 from .forms import ReviewForm
 from goods.models import Categories
-
+from django.contrib.auth.decorators import login_required
 
 def index(request):
 
@@ -32,17 +32,24 @@ def contacts(request):
 def payment_delivery(request):
     return render(request, 'main/payment_delivery.html', {'title': 'Оплата і Доставка'})
 
+from django.contrib.auth.models import User
+
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def reviews(request):
+    username = request.user.username
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
-            review.user = request.user  
+            review.user = request.user
             review.save()
             return redirect('main:reviews')
     else:
         form = ReviewForm()
 
     reviews = Review.objects.all()
-    context = {'reviews': reviews, 'form': form}
+    context = {'reviews': reviews, 'form': form, 'username': username}
     return render(request, 'main/reviews.html', context)

@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from carts.models import Cart
 from orders.models import Order, OrderItem
-
+from django.contrib.auth.forms import PasswordResetForm
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
 
@@ -101,3 +101,12 @@ def logout(request):
     messages.success(request, f"{request.user.username}, Ви вийшли з аккаунта")
     auth.logout(request)
     return redirect(reverse('main:index'))
+
+def password_reset(request):
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            pass
+    else:
+        form = PasswordResetForm()
+    return render(request, 'users/password_reset.html', {'form': form})

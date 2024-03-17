@@ -6,6 +6,11 @@ $(document).ready(function () {
         var cartCount = parseInt(goodsInCartCount.text() || 0);
         var product_id = $(this).data("product-id");
         var add_to_cart_url = $(this).attr("href");
+        var nicknameField = $("#nickname");
+        var username = "{{ request.user.username }}"; 
+        if (username) {
+            nicknameField.val(username);
+        }    
         $.ajax({
             type: "POST",
             url: add_to_cart_url,
@@ -30,6 +35,7 @@ $(document).ready(function () {
             },
         });
     });
+    
     $(document).on("click", ".remove-from-cart", function (e) {
         e.preventDefault();
         var goodsInCartCount = $("#goods-in-cart-count");

@@ -1,6 +1,25 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+    <style>
+        .content-container {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock  %}
 
 {% block content %}
-<h2>Контакти</h2>
-<p>Пошта для звязку:sandy.tuor.2024@gmail.com ,номер для звязку: , наш телеграм бот:</p>
+    <div class="mt-5 pt-5 content-container custom-shadow rounded">
+        <h2>Контакти</h2>
+        <p>Пошта для зв'язку: sandy.tuor.2024@gmail.com, номер для зв'язку: +380123456789, наш телеграм бот: @sandy_bot</p>
+    </div>
 {% endblock %}

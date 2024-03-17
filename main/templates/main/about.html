@@ -3,6 +3,14 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+    <style>
+        .content-container {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
 {% endblock %}
 
 {% block modal_cart %}
@@ -10,7 +18,7 @@
 {% endblock  %}
 
 {% block content %}
-    <div class="mt-5 pt-5 bg-white custom-shadow rounded">
+    <div class="mt-5 pt-5 content-container custom-shadow rounded">
         <h2 class="m-2"><strong>{{ content }}</strong></h2>
         <p class="m-2">{{ text_on_page }}</p>
     </div>
@@ -23,5 +31,3 @@
     </div>
 </footer>
 {% endblock %}
-
-
