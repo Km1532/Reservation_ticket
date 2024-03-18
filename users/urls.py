@@ -12,5 +12,6 @@ urlpatterns = [
     path('users-cart/', views.users_cart, name='users_cart'),
     path('logout/', views.logout, name='logout'),
     path('password-reset/', views.password_reset, name='password_reset'),
-   # path('password-reset/', views.password_reset_view, name='password_reset'),
+    path('login/soon/', views.soon_page, name='soon_page'),
+    # path('password-reset/', views.password_reset_view, name='password_reset'),
 ]

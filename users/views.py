@@ -110,3 +110,5 @@ def password_reset(request):
     else:
         form = PasswordResetForm()
     return render(request, 'users/password_reset.html', {'form': form})
+def soon_page(request):
+    return render(request, 'users/soon_page.html')
