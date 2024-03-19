@@ -50,6 +50,6 @@ def reviews(request):
     else:
         form = ReviewForm()
 
-    reviews = Review.objects.all()
+    reviews = Review.objects.filter(user=request.user) 
     context = {'reviews': reviews, 'form': form, 'username': username}
     return render(request, 'main/reviews.html', context)
