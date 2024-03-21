@@ -3,31 +3,28 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Ticket service{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'deps/icons/favicon.ico' %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'deps/css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}">
-    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'deps/icons/favicon.ico' %}">
     {% block css %}
-
     {% endblock %}
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'deps/favicon/site.webmanifest' %}">
-    <title>{{ title }}</title>
 </head>
 <body style="color: #cbda8ac3 !important;">
         <header>
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'main:index' %}">
-                    <img src="{% static 'deps/icon/favicon.ico' %}" alt="Site Icon" width="32" height="32">
+                    <img src="{% static 'deps/icons/favicon.ico' %}" alt="Site Icon" width="32" height="32">
                 </a>                
                 <a class="navbar-brand" href="{% url 'main:index' %}">Головна</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -123,5 +120,4 @@
     <script src="{% static 'deps/js/jquery-ajax.js' %}"></script>
     <script src="{% static 'deps/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
 </body>
-
 </html>
