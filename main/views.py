@@ -5,7 +5,11 @@ from .models import Review
 from .forms import ReviewForm
 from goods.models import Categories
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from .models import Review
+from .forms import ReviewForm
 def index(request):
 
 
@@ -32,14 +36,24 @@ def contacts(request):
 def payment_delivery(request):
     return render(request, 'main/payment_delivery.html', {'title': 'Оплата і Доставка'})
 
-from django.contrib.auth.models import User
 
-from django.shortcuts import redirect
+
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .models import Review
+from .forms import ReviewForm
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Review
+from .forms import ReviewForm
 
 @login_required
 def reviews(request):
     username = request.user.username
+    user_avatar = None
+
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -50,6 +64,9 @@ def reviews(request):
     else:
         form = ReviewForm()
 
-    reviews = Review.objects.filter(user=request.user) 
-    context = {'reviews': reviews, 'form': form, 'username': username}
+    if request.user.image:
+        user_avatar = request.user.image.url
+
+    reviews = Review.objects.filter(user=request.user)
+    context = {'reviews': reviews, 'form': form, 'username': username, 'user_avatar': user_avatar}
     return render(request, 'main/reviews.html', context)

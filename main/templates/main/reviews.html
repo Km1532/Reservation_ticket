@@ -15,6 +15,9 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">{{ review.user.username }}</h5> 
+                            {% if review.user.image %}
+                                <img src="{{ review.user.image.url }}" alt="User Avatar">
+                            {% endif %}
                             <p class="card-text">{{ review.service }}</p>
                             <p class="card-text">{{ review.comment }}</p>
                             <p class="card-text">{{ review.created_at }}</p>
@@ -31,15 +34,15 @@
         {% csrf_token %}
         <div class="mb-3">
             <label for="nickname" class="form-label">Нікнейм</label>
-            <input type="text" class="form-control" id="nickname" name="nickname" value="{{ username }}" readonly>
+            <input type="text" class="form-control" id="nickname" name="nickname" value="{{ request.user.username }}" readonly>
         </div>
            
         <div class="mb-3">
-            <label for="service" class="form-label">Про сервіс,покупку білетів,сайт і інше що стосується нашой компанії:</label>
+            <label for="service" class="form-label">Про сервіс, покупку білетів, сайт і інше, що стосується нашої компанії:</label>
             <textarea class="form-control" id="service" name="service" rows="3" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="comment" class="form-label">Коментар про концерт подію на які ви пішли і як вам:</label>
+            <label for="comment" class="form-label">Коментар про концерт або подію, на яку ви пішли і як вам:</label>
             <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
         </div>
         <div class="mb-3">
