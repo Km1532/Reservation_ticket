@@ -1,0 +1,5 @@
+[
+    {"model": "tickets.category", "fields": {"name": "Спорт"}},
+    {"model": "tickets.category", "fields": {"name": "Концерти"}},
+    {"model": "tickets.category", "fields": {"name": "Кіно"}}
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "model": "tickets.event",
+        "fields": {
+            "name": "Футбольний матч",
+            "description": "Опис футбольного матчу",
+            "image": "events_images/football_match.jpg",
+            "price": 50.00,
+            "quantity": 100,
+            "category": 1  
+        }
+    },
+    {
+        "model": "tickets.event",
+        "fields": {
+            "name": "Концерт групи X",
+            "description": "Опис концерту",
+            "image": "events_images/concert_x.jpg",
+            "price": 30.00,
+            "quantity": 150,
+            "category": 2  
+        }
+    }
+]
